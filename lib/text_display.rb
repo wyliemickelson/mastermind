@@ -1,43 +1,47 @@
+require_relative 'display.rb'
+
 module TextDisplay
+  include Display
   def display_start
     <<-HEREDOC
 
 
-      #{formatting("underline", "How to play Mastermind:")}
+      #{format("underline", "How to play Mastermind:")}
 
       This is a 1-player game against the computer.
-      You can choose to be the code #{formatting("underline", "maker")} or the code #{formatting("underline", "breaker")}.
+      You can choose to be the code #{format("underline", "maker")} or the code #{format("underline", "breaker")}.
 
-      There are six different number/color combinations:
+      There are six different color options: RCYGBM
 
-      #{code_colors("1")}#{code_colors("2")}#{code_colors("3")}#{code_colors("4")}#{code_colors("5")}#{code_colors("6")}
+      #{code_colors("R")}#{code_colors("C")}#{code_colors("Y")}#{code_colors("G")}#{code_colors("B")}#{code_colors("M")}
 
 
       The code maker will choose four to create a 'master code'. For example,
 
-      #{code_colors("1")}#{code_colors("3")}#{code_colors("4")}#{code_colors("1")}
+      #{code_colors("B")}#{code_colors("C")}#{code_colors("M")}#{code_colors("R")}
 
-      As you can see, there can be #{formatting("red", "more then one")} of the same number/color.
+      There can be multiple slots of of the same color, but blanks are not allowed.
       In order to win, the code breaker needs to guess the 'master code' in 12 or less turns.
 
 
-      #{formatting("underline", "Clues:")}
+      #{format("underline", "Clues:")}
       After each guess, there will be up to four clues to help crack the code.
 
-       #{clue_colors("*")}This clue means you have 1 correct number in the correct location.
+       #{clue_colors("*")}This clue means you have 1 correct color in the correct location.
 
-       #{clue_colors("?")}This clue means you have 1 correct number, but in the wrong location.
+       #{clue_colors("?")}This clue means you have 1 correct color, but in the wrong location.
 
 
-      #{formatting("underline", "Clue Example:")}
-      To continue the example, using the above 'master code' a guess of "1463" would produce 3 clues:
+      #{format("underline", "Clue Example:")}
+      To continue the example, using the above 'master code' a guess of "RGMY" would produce 3 clues:
+      **FORMAT THIS CORRECTLY LATER**
 
-      #{code_colors("1")}#{code_colors("4")}#{code_colors("6")}#{code_colors("3")}  Clues: #{clue_colors("*")}#{clue_colors("?")}#{clue_colors("?")}
+      #{code_colors("R")}#{code_colors("G")}#{code_colors("M")}#{code_colors("Y")}  Clues: #{clue_colors("*")}#{clue_colors("?")}#{clue_colors("?")}
 
 
       The guess had 1 correct number in the correct location and 2 correct numbers in a wrong location.
 
-      #{formatting("underline", "It's time to play!")}
+      #{format("underline", "It's time to play!")}
       Would you like to be the code MAKER or code BREAKER?
 
       Press '1' to be the code MAKER
@@ -54,11 +58,11 @@ module TextDisplay
   end
 
   def display_turn_prompt
-    "Codebreaker - enter a guess consisting of four color characters (eg. RCYG): "
+    "Codebreaker - enter a guess consisting of four color characters (eg. RCYG) or type 'q' to quit: "
   end
 
   def display_cb_win
-    "Guess correct! Codebreaker wins!"
+    format("underline", "Guess correct! Codebreaker wins!")
   end
 
   def display_cm_win
@@ -66,7 +70,15 @@ module TextDisplay
   end
 
   def display_invalid_sequence
-    "Color sequence is invalid. Try again with the possible colors: (RCYGBM)"
+    "Color sequence is invalid. Try again with the possible colors (RCYGBM) or type 'q' to quit:"
+  end
+
+  def display_tf
+    "Thanks for playing!"
+  end
+
+  def display_invalid_game_type
+    "Enter '1' to be the code MAKER or '2' to be the code BREAKER"
   end
 
   def clear
@@ -75,5 +87,9 @@ module TextDisplay
     else
       system "clear"
     end
+  end
+
+  def format_test
+    "\e[4mHello\e[0m"
   end
 end
