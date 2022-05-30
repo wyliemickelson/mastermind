@@ -22,4 +22,12 @@ module Display
   def display_invalid_sequence
     "Color sequence is invalid. Try again with the possible colors: (ROYGBV)"
   end
+
+  def clear
+    if Gem.win_platform?
+      system 'cls'
+    else
+      system 'clear'
+    end
+  end
 end

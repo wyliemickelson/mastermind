@@ -62,6 +62,7 @@ class Game
     print display_turn_prompt
     guessed_seq = get_seq
     board.add_sequence(guessed_seq)
+    clear
     board.display
     guessed_seq
   end
