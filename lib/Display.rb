@@ -6,4 +6,8 @@ module Display
     Your code: 
     HEREDOC
   end
+
+  def display_turn_prompt
+    "Enter a guess consisting of four color characters (eg. BRRG)\n Your guess: "
+  end
 end
