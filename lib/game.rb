@@ -1,7 +1,7 @@
-require_relative 'Display.rb'
+require_relative 'text_display.rb'
 
 class Game
-  include Display
+  include TextDisplay
   
   attr_reader :board, :curr_guess
   def initialize
@@ -17,6 +17,7 @@ class Game
   end
 
   def setup
+    # puts display_start
     create_code
   end
 
@@ -51,7 +52,7 @@ class Game
   end
 
   def valid_seq?(seq)
-    valid_colors = "ROYGBV"
+    valid_colors = "RCYGBM"
     if seq.nil? || seq.colors.length != 4 || seq.colors.any? { |color| !valid_colors.include?(color) }
       return false
     end

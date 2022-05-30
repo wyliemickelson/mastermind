@@ -1,6 +1,7 @@
-require_relative 'Game.rb'
-require_relative 'Board.rb'
-require_relative 'Sequence.rb'
+require_relative 'game.rb'
+require_relative 'board.rb'
+require_relative 'sequence.rb'
 
-game = Game.new
-game.play
+# game = Game.new.play
+
+game = Game.new.play
