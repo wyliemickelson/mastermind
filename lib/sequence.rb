@@ -12,8 +12,12 @@ class Sequence
     @colors << color
   end
 
+  def empty?
+    colors.all? { |color| color.nil? || color == ""}
+  end
+
   def to_s
-    colors.reduce("|") { |s, color| s += " #{get_color(color)}|" }
+    colors.reduce("|") { |s, color| s += " #{code_colors(color)}|" }
   end
 
   def equal?(seq)
