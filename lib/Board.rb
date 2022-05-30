@@ -15,7 +15,7 @@ class Board
     puts "\n"
     sequences.each_with_index do |seq, index| 
       spaces = " " if index < 9
-      puts "Guess #{index + 1}: #{spaces}#{seq}\n---------------------------"
+      puts "Guess #{index + 1}: #{spaces}#{seq}\n-----------------------------------"
     end
     puts "\n"
   end

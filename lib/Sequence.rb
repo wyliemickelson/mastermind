@@ -1,4 +1,7 @@
+require_relative 'display.rb'
+
 class Sequence
+  include Display
   attr_reader :colors
   def initialize(colors = Array.new)
     @colors = colors
@@ -9,7 +12,7 @@ class Sequence
   end
 
   def to_s
-    "| #{colors[0]} | #{colors[1]} | #{colors[2]} | #{colors[3]} |"
+    colors.reduce("|") { |s, color| s += " #{get_color(color)}|" }
   end
 
   def equal?(seq)
