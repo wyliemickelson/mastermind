@@ -11,7 +11,7 @@ module TextDisplay
       This is a 1-player game against the computer.
       You can choose to be the code #{format("underline", "maker")} or the code #{format("underline", "breaker")}.
 
-      There are six different color options: RCYGBM
+      There are six different color options: Red, Cyan, Yellow, Green, Blue, or Magenta.
 
       #{code_colors("R")}#{code_colors("C")}#{code_colors("Y")}#{code_colors("G")}#{code_colors("B")}#{code_colors("M")}
 
@@ -73,7 +73,7 @@ module TextDisplay
     "Color sequence is invalid. Try again with the possible colors (RCYGBM) or type 'q' to quit:"
   end
 
-  def display_tf
+  def display_tfp
     "Thanks for playing!"
   end
 
