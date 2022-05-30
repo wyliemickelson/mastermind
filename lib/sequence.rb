@@ -1,8 +1,9 @@
-require_relative 'display.rb'
+require_relative "display.rb"
 
 class Sequence
   include Display
   attr_reader :colors
+
   def initialize(colors = Array.new)
     @colors = colors
   end

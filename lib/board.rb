@@ -4,7 +4,7 @@ class Board
 
   def initialize(sequences = Array.new)
     @sequences = sequences
-    @code = Sequence.new 
+    @code = Sequence.new
   end
 
   def add_sequence(seq)
@@ -13,7 +13,7 @@ class Board
 
   def display
     puts "\n"
-    sequences.each_with_index do |seq, index| 
+    sequences.each_with_index do |seq, index|
       spaces = " " if index < 9
       puts "Guess #{index + 1}: #{spaces}#{seq}\n-----------------------------------"
     end

@@ -1,9 +1,10 @@
-require_relative 'text_display.rb'
+require_relative "text_display.rb"
 
 class Game
   include TextDisplay
-  
+
   attr_reader :board, :curr_guess
+
   def initialize
     @board = Board.new
     @curr_guess = nil
