@@ -33,14 +33,40 @@ class Game
 
   def create_code
     print display_codemaker_prompt.chomp
-    # TODO - create input validation
+    code = get_seq
+    @board.code = code
+  end
+
+  def get_seq
     seq = Sequence.new(gets.chomp.upcase.split(""))
-    @board.code = seq
+    check_valid_seq(seq)
+  end
+
+  def check_valid_seq(seq)
+    until valid_seq?(seq)
+      puts display_invalid_sequence
+      seq = get_seq
+    end
+    seq
+  end
+
+  def valid_seq?(seq)
+    valid_colors = "ROYGBV"
+    if seq.nil?
+      return false
+    end
+    if seq.colors.length != 4
+      return false
+    end
+    unless seq.colors.all? { |color| valid_colors.include?(color) }
+      return false
+    end
+    true
   end
 
   def turn
     print display_turn_prompt
-    guessed_seq = Sequence.new(gets.chomp.upcase.split(""))
+    guessed_seq = get_seq
     board.add_sequence(guessed_seq)
     board.display
     guessed_seq
