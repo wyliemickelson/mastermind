@@ -1,16 +1,14 @@
-require_relative 'Peg.rb'
-
 class Sequence
-  attr_reader :pegs
-  def initialize(pegs = Array.new)
-    @pegs = pegs
+  attr_reader :colors
+  def initialize(colors = Array.new)
+    @colors = colors
   end
 
-  def add_peg(peg)
-    @pegs << peg
+  def add_color(color)
+    @colors << color
   end
 
   def to_s
-    "| #{pegs[0]} | #{pegs[1]} | #{pegs[2]} | #{pegs[3]} |"
+    "| #{colors[0]} | #{colors[1]} | #{colors[2]} | #{colors[3]} |"
   end
 end
