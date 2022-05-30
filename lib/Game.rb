@@ -52,13 +52,7 @@ class Game
 
   def valid_seq?(seq)
     valid_colors = "ROYGBV"
-    if seq.nil?
-      return false
-    end
-    if seq.colors.length != 4
-      return false
-    end
-    unless seq.colors.all? { |color| valid_colors.include?(color) }
+    if seq.nil? || seq.colors.length != 4 || seq.colors.any? { |color| !valid_colors.include?(color) }
       return false
     end
     true
