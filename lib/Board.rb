@@ -1,10 +1,12 @@
 require_relative 'Sequence.rb'
 
 class Board
-  attr_reader :sequences, :winning_code
+  attr_reader :sequences
+  attr_accessor :code
+
   def initialize(sequences = Array.new)
     @sequences = sequences
-    @winning_code = Sequence.new 
+    @code = Sequence.new 
   end
 
   def add_sequence(seq)
