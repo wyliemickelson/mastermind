@@ -8,6 +8,14 @@ module Display
   end
 
   def display_turn_prompt
-    "Enter a guess consisting of four color characters (eg. BRRG)\n Your guess: "
+    "Enter a guess consisting of four color characters (eg. BRRG): "
+  end
+
+  def display_cb_win
+    "Guess correct! Codebreaker wins!"
+  end
+
+  def display_cm_win
+    "Final guess incorrect! Codemaker wins!"
   end
 end

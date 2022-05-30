@@ -11,4 +11,8 @@ class Sequence
   def to_s
     "| #{colors[0]} | #{colors[1]} | #{colors[2]} | #{colors[3]} |"
   end
+
+  def equal?(seq)
+    colors.to_s == seq.colors.to_s
+  end
 end

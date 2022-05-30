@@ -1,4 +1,3 @@
-require_relative 'Board.rb'
 require_relative 'Display.rb'
 
 class Game
@@ -8,7 +7,6 @@ class Game
   def initialize
     @board = Board.new
     @curr_guess = nil
-    @winner = ""
   end
 
   def play
@@ -24,10 +22,10 @@ class Game
 
   def game_over?
     if curr_guess.equal?(board.code)
-      @winner = "Codebreaker"
+      puts display_cb_win
       return true
     elsif board.sequences.length == 12
-      @winner = "Codemaker"
+      puts display_cm_win
       return true
     end
     false
@@ -44,9 +42,7 @@ class Game
     print display_turn_prompt
     guessed_seq = Sequence.new(gets.chomp.upcase.split(""))
     board.add_sequence(guessed_seq)
+    board.display
     guessed_seq
   end
 end
-
-game = Game.new
-game.setup
