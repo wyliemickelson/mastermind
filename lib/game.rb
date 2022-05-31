@@ -1,7 +1,8 @@
 require_relative "text_display.rb"
-
+require 'byebug'
 class Game
   include TextDisplay
+  include GameLogic
 
   attr_reader :board, :curr_guess, :game_type
 
@@ -23,6 +24,9 @@ class Game
     board.code = random_code
     until game_over?
       @curr_guess = turn
+      generate_hints(curr_guess) if curr_guess != 0
+      puts board.code
+      board.display
     end
   end
 
@@ -32,6 +36,13 @@ class Game
     4.times { code.add_color(options.sample) }
     code
   end
+
+  def generate_hints(guess)
+
+    
+  end
+
+  def 
 
   def setup
     puts display_start
@@ -109,7 +120,6 @@ class Game
     end
     board.add_sequence(guessed_seq)
     clear
-    board.display
     guessed_seq
   end
 end
